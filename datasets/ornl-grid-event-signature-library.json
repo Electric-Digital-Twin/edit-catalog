@@ -1,0 +1,22 @@
+{
+  "id": "link:ornl-grid-event-signature-library",
+  "title": "Grid Event Signature Library (GSL) — ORNL",
+  "description": "A curated, labelled library of electric power-system event signatures (voltage/current measurement signatures), developed by Oak Ridge and Lawrence Livermore National Laboratories and funded by the US Department of Energy to accelerate machine-learning and AI applications on grid data. Data is anonymised. EDiT links only; ORNL hosts the repository.",
+  "tier": "linked",
+  "publisher": { "name": "Oak Ridge National Laboratory (ORNL) / LLNL", "role": "external-source", "partOf": null },
+  "license": "LicenseRef-EXTERNAL",
+  "themes": ["event-signatures", "measurement", "machine-learning", "fault-detection"],
+  "spatialCoverage": "United States (DOE programme); anonymised sources",
+  "temporalResolution": null,
+  "updateFrequency": "varies-by-series",
+  "distribution": {
+    "format": "web-GUI / labelled signature library",
+    "access": "link-only",
+    "endpoint": "https://gsl.ornl.gov/",
+    "note": "Free to access, but a valid email address is required: a 7-day access token is emailed to you (no usernames or passwords). Data is anonymised. Confirm reuse/citation terms with the project before redistributing. See the GSL user guide and FAQ for the full data dictionary.",
+    "loader": null
+  },
+  "variables": "Labelled and tagged power-system event signatures (e.g. voltage/current measurement traces by event type). Full field list and event-tag taxonomy maintained upstream by ORNL — see the GSL user guide.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}
