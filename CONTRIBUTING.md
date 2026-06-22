@@ -93,6 +93,13 @@ external placeholder is not allowed for data we host.
   licence is the single most important field: it tells everyone what they may and may not do
   with the data.
 
+  **Linked sources with pricing or tiers:** when a linked source charges for access or has
+  several access tiers, do **not** write specific prices, quotas or tier sizes into the record —
+  they go stale. Instead describe the *shape* of the access model (e.g. "a free academic tier
+  with limits, paid tiers for full or commercial access") and link to the source's own pricing
+  or licensing page for the current details. Always surface any restriction that would affect a
+  typical EDiT user — for example, a free tier that forbids funded research.
+
 **`distribution.access`** — `direct` if the data can be downloaded straight from the endpoint,
 or `link-only` if it sits behind a registration wall or another site you don't control.
 A `direct` record must include an `endpoint` URL.
@@ -127,3 +134,33 @@ reason. If it passes locally, it will pass in the automatic check too.
 Please only add datasets you have the right to share or link to, and describe them honestly —
 especially the licence and the access terms. The catalog is a shared, public, national
 resource; its value depends on every record being accurate and properly attributed.
+
+---
+
+# Contributing a code project to EDiT
+
+Alongside datasets, EDiT catalogs **code** — applications, prototypes, libraries, thesis
+codebases, teaching repositories and models. This is an **inclusive index, not a curated
+gate**: low-maturity work is welcome. The `maturity` field tells visitors what to expect
+(`concept`, `experimental`, `beta`, `stable`, `archived`), so an honest "experimental" label
+is far better than overstating readiness.
+
+Code records live in `projects/`, one JSON file each, validated against
+`schema/project.schema.json`. The contribution flow is identical to datasets: org members add
+a file directly; external contributors fork and open a pull request.
+
+Start from `projects/_TEMPLATE.json`. Field rules the validator enforces:
+
+- **`id`** — namespaced `proj:` followed by a lowercase hyphenated slug.
+- **`kind`** — one of `application`, `prototype`, `library`, `thesis`, `teaching`, `model`, `tool`.
+- **`maturity`** — one of `concept`, `experimental`, `beta`, `stable`, `archived`. Be honest;
+  low maturity is fine.
+- **`license`** — an SPDX identifier for the code. Two special values: use `LicenseRef-NONE`
+  for code published with **no licence stated** (which means all rights reserved by default —
+  flagging it warns users they cannot reuse it freely), or `LicenseRef-EXTERNAL` for an unusual
+  licence described in `notes`.
+- **`repository`** — the source-code URL.
+- **`consumesDatasets`** (optional) — ids of EDiT datasets the project uses, e.g.
+  `link:fingrid-open-data`, creating a cross-link between the code and data catalogs.
+
+Everything else (`languages`, `themes`, `demoUrl`, `notes`) is descriptive.

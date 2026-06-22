@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EDiT — datakatalog för elkraftsystem</title>
+<title>EDiT — katalog för data och kod</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -25,16 +25,22 @@
   </div>
 </div></header>
 
-<main><div class="wrap">
-  <div class="demo-note" id="demoNote"></div>
-  <div class="controls" id="controls">
-    <button class="filter" data-f="all" aria-pressed="true"> <span class="n" id="n-all">·</span></button>
-    <button class="filter" data-f="house" aria-pressed="false"> <span class="n" id="n-house">·</span></button>
-    <button class="filter" data-f="linked" aria-pressed="false"> <span class="n" id="n-linked">·</span></button>
-    <button class="filter" data-f="contributed" aria-pressed="false"> <span class="n" id="n-contributed">·</span></button>
-    <span class="count" id="shown"></span>
+<div class="wrap">
+  <div class="tabs">
+    <button class="tab" id="tab-data" aria-current="true"></button>
+    <button class="tab" id="tab-code" aria-current="false"></button>
   </div>
-  <div id="cards"></div>
+</div>
+
+<main><div class="wrap">
+  <section id="view-data">
+    <div class="controls" id="controls-data"></div>
+    <div id="cards-data"></div>
+  </section>
+  <section id="view-code" style="display:none">
+    <div class="controls" id="controls-code"></div>
+    <div id="cards-code"></div>
+  </section>
 </div></main>
 
 <footer><div class="wrap"><span id="siteFooter"></span></div></footer>

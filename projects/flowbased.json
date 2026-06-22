@@ -1,0 +1,17 @@
+{
+  "id": "proj:flowbased",
+  "title": "Flow-based market coupling tools",
+  "description": "Code and experiments related to flow-based capacity calculation and market coupling in the Nordic context. Connects naturally to the Nordic RCC / JAO flow-based data in the EDiT data catalog.",
+  "kind": "prototype",
+  "maturity": "experimental",
+  "publisher": { "name": "KTH EPE", "affiliation": "KTH EPE", "contact": null },
+  "license": "LicenseRef-NONE",
+  "repository": "https://github.com/KTH-EPE/flowbased",
+  "languages": ["Python"],
+  "themes": ["flow-based", "market-coupling", "capacity-calculation", "nordic"],
+  "consumesDatasets": ["link:nordic-rcc-flow-based"],
+  "demoUrl": null,
+  "notes": "Research/experimental code. Licence not stated (LicenseRef-NONE) -- check with authors before reuse. Cross-linked to the Nordic RCC flow-based dataset.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}

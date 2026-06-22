@@ -1,0 +1,58 @@
+{
+  "count": 4,
+  "projects": [
+    {
+      "id": "proj:eg2130-pandapower",
+      "title": "EG2130 pandapower assignment materials",
+      "kind": "teaching",
+      "maturity": "stable",
+      "themes": [
+        "teaching",
+        "pandapower",
+        "power-flow",
+        "education"
+      ],
+      "file": "eg2130-pandapower.json"
+    },
+    {
+      "id": "proj:flowbased",
+      "title": "Flow-based market coupling tools",
+      "kind": "prototype",
+      "maturity": "experimental",
+      "themes": [
+        "flow-based",
+        "market-coupling",
+        "capacity-calculation",
+        "nordic"
+      ],
+      "file": "flowbased.json"
+    },
+    {
+      "id": "proj:ieee-nordic-model",
+      "title": "IEEE Nordic test system model",
+      "kind": "model",
+      "maturity": "beta",
+      "themes": [
+        "nordic",
+        "test-system",
+        "power-flow",
+        "model"
+      ],
+      "file": "ieee-nordic-model.json"
+    },
+    {
+      "id": "proj:nordic490-demonstrator",
+      "title": "[EXAMPLE] Nordic-490 24/7 demonstrator",
+      "kind": "application",
+      "maturity": "concept",
+      "themes": [
+        "example",
+        "nordic",
+        "power-flow",
+        "demonstrator",
+        "real-time"
+      ],
+      "file": "nordic490-demonstrator.json"
+    }
+  ]
+}

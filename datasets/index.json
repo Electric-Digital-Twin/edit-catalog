@@ -1,9 +1,22 @@
 {
-  "count": 3,
+  "count": 10,
   "datasets": [
     {
+      "id": "link:energinet-energi-data-service",
+      "title": "Energinet Energi Data Service \u2014 Danish energy system",
+      "tier": "linked",
+      "themes": [
+        "production",
+        "consumption",
+        "co2",
+        "electricity-market",
+        "nordic",
+        "forecast"
+      ],
+      "file": "energinet-energi-data-service.json"
+    },
+    {
       "id": "link:entsoe-transparency-load-gen",
-      "file": "entsoe-transparency-load-gen.json",
       "title": "ENTSO-E Transparency \u2014 load & generation",
       "tier": "linked",
       "themes": [
@@ -11,31 +24,116 @@
         "generation",
         "cross-border-flow",
         "market"
-      ]
+      ],
+      "file": "entsoe-transparency-load-gen.json"
+    },
+    {
+      "id": "link:fingrid-open-data",
+      "title": "Fingrid Open Data \u2014 Finnish power system & electricity market",
+      "tier": "linked",
+      "themes": [
+        "production",
+        "consumption",
+        "wind-power",
+        "transmission-capacity",
+        "balancing",
+        "nordic",
+        "forecast"
+      ],
+      "file": "fingrid-open-data.json"
     },
     {
       "id": "contrib:lv-pv-hosting-2026",
-      "file": "lv-pv-hosting-2026.json",
-      "title": "LV feeder PV hosting-capacity traces (MSc thesis)",
+      "title": "[EXAMPLE] LV feeder PV hosting-capacity traces (MSc thesis)",
       "tier": "contributed",
       "themes": [
+        "example",
         "pv",
         "hosting-capacity",
         "low-voltage",
         "thesis"
-      ]
+      ],
+      "file": "lv-pv-hosting-2026.json"
+    },
+    {
+      "id": "link:nord-pool-market-data",
+      "title": "Nord Pool \u2014 power market data (day-ahead, intraday, system)",
+      "tier": "linked",
+      "themes": [
+        "day-ahead-prices",
+        "intraday",
+        "market",
+        "balancing",
+        "nordic",
+        "bidding-zones"
+      ],
+      "file": "nord-pool-market-data.json"
+    },
+    {
+      "id": "link:nordic-rcc-flow-based",
+      "title": "Nordic RCC \u2014 flow-based capacity calculation data (via JAO)",
+      "tier": "linked",
+      "themes": [
+        "flow-based",
+        "capacity-calculation",
+        "cnec",
+        "market-coupling",
+        "nordic",
+        "transparency"
+      ],
+      "file": "nordic-rcc-flow-based.json"
     },
     {
       "id": "edit:nordic490-live-state",
-      "file": "nordic490-live-state.json",
-      "title": "Nordic-490 demonstrator \u2014 live state",
+      "title": "[EXAMPLE] Nordic-490 demonstrator \u2014 live state",
       "tier": "house",
       "themes": [
+        "example",
         "power-flow",
         "nordic",
-        "state-estimation",
         "monitoring"
-      ]
+      ],
+      "file": "nordic490-live-state.json"
+    },
+    {
+      "id": "link:ornl-grid-event-signature-library",
+      "title": "Grid Event Signature Library (GSL) \u2014 ORNL",
+      "tier": "linked",
+      "themes": [
+        "event-signatures",
+        "measurement",
+        "machine-learning",
+        "fault-detection"
+      ],
+      "file": "ornl-grid-event-signature-library.json"
+    },
+    {
+      "id": "link:pecan-street-dataport",
+      "title": "Pecan Street Dataport \u2014 residential energy & water data",
+      "tier": "linked",
+      "themes": [
+        "residential",
+        "smart-meter",
+        "load",
+        "water",
+        "electric-vehicles",
+        "demand"
+      ],
+      "file": "pecan-street-dataport.json"
+    },
+    {
+      "id": "link:statnett-power-system-data",
+      "title": "Statnett \u2014 Norwegian power system data",
+      "tier": "linked",
+      "themes": [
+        "power-balance",
+        "power-flow",
+        "frequency",
+        "production",
+        "consumption",
+        "nordic"
+      ],
+      "file": "statnett-power-system-data.json"
     }
   ]
 }

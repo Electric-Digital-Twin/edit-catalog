@@ -1,0 +1,22 @@
+{
+  "id": "link:pecan-street-dataport",
+  "title": "Pecan Street Dataport — residential energy & water data",
+  "description": "One of the largest resources for high-resolution residential energy-use data, extended to water use, electric transportation and regenerative agriculture, collected from a network of volunteer participants with ancillary demographic and home-audit data. Aimed at researchers and companies developing and testing energy technologies. EDiT links only; Pecan Street Inc. hosts and licenses the data.",
+  "tier": "linked",
+  "publisher": { "name": "Pecan Street Inc.", "role": "external-source", "partOf": null },
+  "license": "LicenseRef-EXTERNAL",
+  "themes": ["residential", "smart-meter", "load", "water", "electric-vehicles", "demand"],
+  "spatialCoverage": "United States (Austin TX, New York, California testbeds, and more)",
+  "temporalResolution": "PT1M",
+  "updateFrequency": "varies-by-series",
+  "distribution": {
+    "format": "CSV / database access via Dataport account",
+    "access": "link-only",
+    "endpoint": "https://www.pecanstreet.org/dataport/",
+    "note": "Requires a Dataport account and acceptance of Pecan Street's licence terms. Access is tiered: a free University tier offers a limited subset for individual academic research only (no resale, no sub-licensing, no funded research), while full-dataset, university-wide, and commercial access are paid. Crucially, the free academic tier does not permit funded research -- confirm the correct tier and restrictions for your use, especially grant-funded work, before relying on this data. See the licensing and pricing page (https://www.pecanstreet.org/dataport/licenses/) for current tiers, terms and prices, and the Dataport metadata document for the data dictionary.",
+    "loader": null
+  },
+  "variables": "Ultra-high-resolution circuit-level electricity use (often 1-minute), plus water use, EV charging, and ancillary demographic/home-audit fields. Full field list in the Dataport metadata document and data dictionary, maintained upstream.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}

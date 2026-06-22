@@ -1,0 +1,17 @@
+{
+  "id": "proj:nordic490-demonstrator",
+  "title": "[EXAMPLE] Nordic-490 24/7 demonstrator",
+  "description": "EXAMPLE / placeholder record for the in-development Nordic-490 demonstrator: a continuously running power-flow model of the Nordic system driven by live weather and production forecasts, visualised on a map. Will produce the 'edit:nordic490-live-state' house dataset. Shown to illustrate how the demonstrator code will be catalogued once it exists.",
+  "kind": "application",
+  "maturity": "concept",
+  "publisher": { "name": "KTH EPE", "affiliation": "EDiT / Elflexibel industri", "contact": null },
+  "license": "MIT",
+  "repository": "https://github.com/Electric-Digital-Twin/nordic490-demonstrator",
+  "languages": ["Python"],
+  "themes": ["example", "nordic", "power-flow", "demonstrator", "real-time"],
+  "consumesDatasets": ["link:fingrid-open-data", "link:energinet-energi-data-service", "link:statnett-power-system-data"],
+  "demoUrl": null,
+  "notes": "EXAMPLE / placeholder -- the demonstrator is in development (concept stage). Repository URL is a placeholder. Shown to illustrate a future house application record.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}

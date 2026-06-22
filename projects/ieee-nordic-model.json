@@ -1,0 +1,17 @@
+{
+  "id": "proj:ieee-nordic-model",
+  "title": "IEEE Nordic test system model",
+  "description": "Power-system model and operational data for the IEEE Nordic test system, produced as a summer project. Useful as a reference network for power-flow, dynamics and educational studies in the Nordic context.",
+  "kind": "model",
+  "maturity": "beta",
+  "publisher": { "name": "KTH EPE", "affiliation": "KTH EPE summer project", "contact": null },
+  "license": "LicenseRef-NONE",
+  "repository": "https://github.com/KTH-EPE/IEEE-Nordic-model",
+  "languages": ["Python"],
+  "themes": ["nordic", "test-system", "power-flow", "model"],
+  "consumesDatasets": [],
+  "demoUrl": null,
+  "notes": "Licence not clearly stated in the repository -- marked LicenseRef-NONE, meaning reuse rights are not granted by default. Confirm with the authors before reusing. Listed as an affiliated KTH-EPE resource.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}

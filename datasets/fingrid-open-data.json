@@ -1,0 +1,22 @@
+{
+  "id": "link:fingrid-open-data",
+  "title": "Fingrid Open Data — Finnish power system & electricity market",
+  "description": "Open data from Fingrid, Finland's transmission system operator, covering the power system and electricity market: production, consumption, wind power, transmission capacities, balancing (e.g. aFRR) and more. Includes both measured and forecast series, many updated in near real-time. Directly relevant to the Nordic synchronous area. EDiT links only; Fingrid hosts and publishes the data.",
+  "tier": "linked",
+  "publisher": { "name": "Fingrid Oyj", "role": "external-source", "partOf": null },
+  "license": "CC-BY-4.0",
+  "themes": ["production", "consumption", "wind-power", "transmission-capacity", "balancing", "nordic", "forecast"],
+  "spatialCoverage": "Finland (FI); cross-border capacities to SE1/SE3/EE etc.",
+  "temporalResolution": "PT1H",
+  "updateFrequency": "varies-by-series",
+  "distribution": {
+    "format": "REST API (JSON / CSV / XML)",
+    "access": "link-only",
+    "endpoint": "https://data.fingrid.fi/en/datasets",
+    "note": "Free REST API; registration needs only a valid email, after which you approve the licence and receive an API key (passed in the x-api-key header). Query by dataset ID and time range, choosing JSON/CSV/XML output. Licence is CC BY 4.0 for datasets produced by Fingrid (attribute as 'Source Fingrid / data.fingrid.fi, license CC 4.0 BY'); a few datasets from other organisations may carry a different licence stated with the dataset. API docs: https://data.fingrid.fi/en/instructions and the developer portal https://developer-data.fingrid.fi .",
+    "loader": null
+  },
+  "variables": "Many individual time series, each identified by a numeric dataset ID (e.g. production, consumption, wind power, day-ahead transmission capacities), typically hourly, in MW, timestamped in UTC. Full dataset list and per-series field definitions maintained upstream by Fingrid.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}

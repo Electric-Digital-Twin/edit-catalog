@@ -1,0 +1,17 @@
+{
+  "id": "proj:eg2130-pandapower",
+  "title": "EG2130 pandapower assignment materials",
+  "description": "Teaching materials and assignment code using pandapower for the EG2130 master's course, covering power-system analysis exercises. Intended for students and educators.",
+  "kind": "teaching",
+  "maturity": "stable",
+  "publisher": { "name": "KTH EPE", "affiliation": "KTH course EG2130", "contact": null },
+  "license": "LicenseRef-NONE",
+  "repository": "https://github.com/KTH-EPE/EG2130-Pandapower",
+  "languages": ["Python", "Jupyter"],
+  "themes": ["teaching", "pandapower", "power-flow", "education"],
+  "consumesDatasets": [],
+  "demoUrl": null,
+  "notes": "Course teaching material. Licence not stated (LicenseRef-NONE); intended for educational use -- confirm reuse terms with the course owners.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}

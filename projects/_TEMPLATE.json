@@ -1,0 +1,17 @@
+{
+  "id": "proj:your-project-slug",
+  "title": "Human-readable project name",
+  "description": "What the project does and what it is for. At least a sentence or two.",
+  "kind": "prototype",
+  "maturity": "experimental",
+  "publisher": { "name": "Your name or group", "affiliation": "e.g. KTH EPE / course code / R&D project", "contact": null },
+  "license": "MIT",
+  "repository": "https://github.com/Electric-Digital-Twin/your-repo",
+  "languages": ["Python"],
+  "themes": ["power-flow"],
+  "consumesDatasets": [],
+  "demoUrl": null,
+  "notes": "Anything users should know: how to run it, licence caveats, current status.",
+  "submittedBy": "you@example.org",
+  "added": "2026-06-22"
+}

@@ -1,11 +1,11 @@
 {
   "id": "edit:nordic490-live-state",
-  "title": "Nordic-490 demonstrator — live state",
-  "description": "Steady-state AC power-flow results for the Nordic-490 bus model, driven by current weather and production forecasts scaled to the model. One snapshot every 5 minutes.",
+  "title": "[EXAMPLE] Nordic-490 demonstrator — live state",
+  "description": "EXAMPLE ENTRY (not yet live): illustrates what a hosted EDiT 'house' dataset will look like once the Nordic-490 demonstrator is running. Planned content: steady-state AC power-flow results for the Nordic-490 bus model, driven by current weather and production forecasts scaled to the model, one snapshot every 5 minutes. The endpoint below is a placeholder and does not yet serve data.",
   "tier": "house",
   "publisher": { "name": "KTH EPE", "role": "host", "partOf": "EDiT / Elflexibel industri" },
   "license": "CC-BY-4.0",
-  "themes": ["power-flow", "nordic", "state-estimation", "monitoring"],
+  "themes": ["example", "power-flow", "nordic", "monitoring"],
   "spatialCoverage": "Nordic synchronous area (SE, NO, FI, DK-east)",
   "temporalResolution": "PT5M",
   "updateFrequency": "PT5M",
@@ -13,9 +13,10 @@
     "format": "parquet",
     "access": "direct",
     "endpoint": "https://catalog.edit.se/api/nordic490/latest.parquet",
+    "note": "EXAMPLE / placeholder endpoint — the Nordic-490 demonstrator is in development and this URL does not yet serve data. Shown to illustrate the shape of a hosted house dataset.",
     "loader": {
       "lang": "python",
-      "snippet": "import pandas as pd; df = pd.read_parquet('https://catalog.edit.se/api/nordic490/latest.parquet')"
+      "snippet": "import pandas as pd; df = pd.read_parquet('https://catalog.edit.se/api/nordic490/latest.parquet')  # placeholder, not yet live"
     }
   },
   "variables": [

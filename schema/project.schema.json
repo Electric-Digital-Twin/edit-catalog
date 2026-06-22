@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://catalog.edit.se/schema/project.schema.json",
+  "title": "EDiT code-project record",
+  "description": "One record describes one code project in the EDiT ecosystem: an application, prototype, library, thesis codebase, or teaching repository. The catalog is an inclusive index, not a curated gate -- low-maturity work is welcome and the maturity field tells visitors what to expect.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "description", "kind", "maturity", "publisher", "license", "repository", "added"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable identifier, namespaced 'proj:' followed by a lowercase hyphenated slug.",
+      "pattern": "^proj:[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "description": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Plain-language summary of what the project does and what it is for."
+    },
+    "kind": {
+      "enum": ["application", "prototype", "library", "thesis", "teaching", "model", "tool"],
+      "description": "What sort of code this is."
+    },
+    "maturity": {
+      "enum": ["concept", "experimental", "beta", "stable", "archived"],
+      "description": "Honest maturity signal. 'concept'/'experimental' are explicitly welcome -- this is an index, not a quality gate. 'archived' = no longer maintained."
+    },
+    "publisher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "affiliation": { "type": ["string", "null"], "description": "e.g. KTH EPE, a course code, an R&D project" },
+        "contact": { "type": ["string", "null"] }
+      }
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX identifier for the code licence. Use LicenseRef-NONE for code published with no licence stated (all rights reserved by default -- flag this so users know they cannot reuse it freely), or LicenseRef-EXTERNAL for an unusual/proprietary licence described in notes.",
+      "pattern": "^(MIT|Apache-2.0|BSD-3-Clause|BSD-2-Clause|GPL-3.0-only|GPL-3.0-or-later|LGPL-3.0-only|AGPL-3.0-only|MPL-2.0|CC-BY-4.0|CC-BY-SA-4.0|CC0-1.0|Unlicense|LicenseRef-NONE|LicenseRef-EXTERNAL)$"
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri",
+      "description": "Primary source-code URL (e.g. a GitHub repo)."
+    },
+    "languages": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Primary languages/stacks, e.g. Python, TypeScript, GridLAB-D."
+    },
+    "themes": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" }
+    },
+    "consumesDatasets": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^(edit|link|contrib):[a-z0-9]+(-[a-z0-9]+)*$" },
+      "description": "Optional cross-links: ids of datasets in the EDiT data catalog that this project uses."
+    },
+    "demoUrl": { "type": ["string", "null"], "format": "uri", "description": "Optional live demo or docs URL." },
+    "notes": { "type": ["string", "null"], "description": "Licence caveats, status notes, how to run, etc." },
+    "submittedBy": { "type": "string" },
+    "added": { "type": "string", "format": "date" }
+  }
+}

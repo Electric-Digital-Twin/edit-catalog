@@ -79,3 +79,27 @@
 .langtoggle a[aria-current="true"]{background:var(--surface2);color:var(--text);}
 .langtoggle a:hover{color:var(--text);}
 .topbar{display:flex;justify-content:flex-end;padding-top:14px;}
+
+/* example / placeholder entries */
+.tag.example{background:#3a2f10;color:#e8c45d;}
+@media (prefers-color-scheme: light){ .tag.example{background:#fbf3da;color:#8a6d10;} }
+
+/* tabs */
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-top:8px;}
+.tab{font:inherit;font-size:14px;background:transparent;color:var(--muted);border:none;
+  border-bottom:2px solid transparent;padding:10px 16px;cursor:pointer;margin-bottom:-1px;transition:.12s;}
+.tab:hover{color:var(--text);}
+.tab[aria-current="true"]{color:var(--text);border-bottom-color:var(--accent);}
+
+/* project icon tint */
+.ico.proj{background:var(--blue-bg);color:var(--blue-fg);}
+
+/* maturity badges */
+.tag.mat-concept{background:var(--surface2);color:var(--muted);}
+.tag.mat-experimental{background:#3a2f10;color:#e8c45d;}
+.tag.mat-beta{background:var(--blue-bg);color:var(--blue-fg);}
+.tag.mat-stable{background:var(--teal-bg);color:var(--teal-fg);}
+.tag.mat-archived{background:var(--surface2);color:var(--faint);}
+@media (prefers-color-scheme: light){
+  .tag.mat-experimental{background:#fbf3da;color:#8a6d10;}
+}
