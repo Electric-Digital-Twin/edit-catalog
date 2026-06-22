@@ -1,0 +1,22 @@
+{
+  "id": "link:nord-pool-market-data",
+  "title": "Nord Pool — power market data (day-ahead, intraday, system)",
+  "description": "Market data from Nord Pool, the Nordic/Baltic power exchange: day-ahead and intraday prices, volumes, capacities and flows, plus operating data (production, consumption, exchange, hydro reservoirs) and balancing-market data. The public data portal shows day-ahead prices in the browser; programmatic and full access is a paid, proprietary data service. EDiT links only; Nord Pool (Euronext group) hosts and licenses the data.",
+  "tier": "linked",
+  "publisher": { "name": "Nord Pool (Euronext group)", "role": "external-source", "partOf": null },
+  "license": "LicenseRef-EXTERNAL",
+  "themes": ["day-ahead-prices", "intraday", "market", "balancing", "nordic", "bidding-zones"],
+  "spatialCoverage": "Nordic & Baltic bidding zones (and beyond)",
+  "temporalResolution": "PT1H",
+  "updateFrequency": "varies-by-series",
+  "distribution": {
+    "format": "Web data portal + paid REST API (CSV/Excel reports)",
+    "access": "link-only",
+    "endpoint": "https://data.nordpoolgroup.com/",
+    "note": "Proprietary, mostly PAID data service: annual data fees per feed plus separate redistribution licences, and free access for trading members. IMPORTANT for academic users: Nord Pool states special terms apply for students, researchers and academic entities -- contact them about academic access rather than assuming the commercial tariff. The public portal does display day-ahead prices in the browser. Historical data goes back decades for some regions. See the Power Market Data Services pages for current products, terms and prices.",
+    "loader": null
+  },
+  "variables": "Day-ahead prices, buy/sell volumes, capacities and flows; intraday trades and orderbooks; operating data (production, consumption, exchange, hydro reservoirs); balancing (mFRR). Per-product field definitions maintained upstream by Nord Pool.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}

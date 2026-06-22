@@ -1,0 +1,22 @@
+{
+  "id": "link:statnett-power-system-data",
+  "title": "Statnett — Norwegian power system data",
+  "description": "Operational data from Statnett, Norway's transmission system operator: power balance, power flow, production and consumption, grid frequency, and reservoir/hydrological context, available via a web download centre and a REST API for real-time topics (flow, balance, frequency). Relevant to the Nordic synchronous area (NO1-NO5). EDiT links only; Statnett hosts the data.",
+  "tier": "linked",
+  "publisher": { "name": "Statnett SF", "role": "external-source", "partOf": null },
+  "license": "LicenseRef-EXTERNAL",
+  "themes": ["power-balance", "power-flow", "frequency", "production", "consumption", "nordic"],
+  "spatialCoverage": "Norway (NO1-NO5); Nordic exchange",
+  "temporalResolution": "PT1H",
+  "updateFrequency": "varies-by-series",
+  "distribution": {
+    "format": "Web download centre + REST API (JSON), real-time topics",
+    "access": "link-only",
+    "endpoint": "https://www.statnett.no/en/for-stakeholders-in-the-power-industry/data-from-the-power-system/",
+    "note": "Web download centre plus a public REST API exposing real-time topics (power flow, balance, grid frequency). No single open licence is clearly stated on the site -- confirm reuse terms with Statnett before redistributing (hence the external-licence marker). NOTE: Statnett has flagged technical issues affecting power-flow and some historical data; for authoritative flow/historical series they direct users to the ENTSO-E Transparency Platform. Community Python client exists (statnett-api-client, MIT) but is unofficial.",
+    "loader": null
+  },
+  "variables": "Real-time topics include power flow between price areas, system power balance, and grid frequency; download centre adds production, consumption and exchange series. Field definitions maintained upstream by Statnett.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "link:energinet-energi-data-service",
+  "title": "Energinet Energi Data Service — Danish energy system",
+  "description": "Free and open data on the Danish energy system from Energinet (Danish TSO): electricity-market data, consumption and production, CO2 emission signals and more. Includes measured and forecast series, many updated frequently. Directly relevant to the Nordic synchronous area (DK1/DK2). EDiT links only; Energinet hosts the data.",
+  "tier": "linked",
+  "publisher": { "name": "Energinet", "role": "external-source", "partOf": null },
+  "license": "CC-BY-4.0",
+  "themes": ["production", "consumption", "co2", "electricity-market", "nordic", "forecast"],
+  "spatialCoverage": "Denmark (DK1, DK2)",
+  "temporalResolution": "PT1H",
+  "updateFrequency": "varies-by-series",
+  "distribution": {
+    "format": "REST API (JSON) / web portal",
+    "access": "direct",
+    "endpoint": "https://www.energidataservice.dk/",
+    "note": "Free, open REST API with NO registration or key required. Licensed CC BY 4.0 (attribute as 'Source: Energinet (www.energidataservice.dk)'). Differentiated, dataset-specific rate limits apply (HTTP 429 if exceeded) -- request roughly once per a dataset's update frequency rather than polling continuously. Example: https://api.energidataservice.dk/dataset/CO2Emis?start=now-PT15M . Swagger docs and per-dataset metadata on the portal.",
+    "loader": {
+      "lang": "python",
+      "snippet": "import pandas as pd, requests; r = requests.get('https://api.energidataservice.dk/dataset/CO2Emis', params={'start':'now-PT15M'}); df = pd.DataFrame(r.json()['records'])"
+    }
+  },
+  "variables": "Many individual datasets (e.g. CO2Emis, Production, Consumption, electricity-market series), each with its own fields documented on its dataset page; typically timestamped hourly or finer, values in their stated units. Full dataset list and field definitions maintained upstream by Energinet.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "link:nordic-rcc-flow-based",
+  "title": "Nordic RCC — flow-based capacity calculation data (via JAO)",
+  "description": "Nordic flow-based capacity-calculation results and related transparency data, surfaced by the Nordic Regional Coordination Centre (Nordic RCC). The operational parameters (e.g. CNECs, flow-based domains) are published through the JAO publication tool on behalf of the Nordic TSOs and Nordic RCC, with related data on the ENTSO-E platform and the Nordic Unavailability Collection System (NUCS). Highly relevant to flow-based market-coupling research. EDiT links only.",
+  "tier": "linked",
+  "publisher": { "name": "Nordic RCC / JAO (on behalf of Nordic TSOs)", "role": "external-source", "partOf": null },
+  "license": "LicenseRef-EXTERNAL",
+  "themes": ["flow-based", "capacity-calculation", "cnec", "market-coupling", "nordic", "transparency"],
+  "spatialCoverage": "Nordic synchronous area / bidding zones",
+  "temporalResolution": "PT1H",
+  "updateFrequency": "varies-by-series",
+  "distribution": {
+    "format": "Web publication tool (JAO) + linked transparency platforms",
+    "access": "link-only",
+    "endpoint": "https://publicationtool.jao.eu/nordic/",
+    "note": "Nordic RCC's Data & Tools page is a hub: flow-based capacity-calculation parameters are published via the JAO publication tool (operated by JAO for the Nordic TSOs and Nordic RCC); related data is on the ENTSO-E Transparency Platform and NUCS (nucs.net). No single open licence is stated -- confirm reuse terms before redistributing. A de-anonymisation mapping table for historical CNEC data and the JAO Publication Handbook are linked from the Nordic RCC Data & Tools page.",
+    "loader": null
+  },
+  "variables": "Flow-based capacity-calculation results: critical network elements and contingencies (CNECs), flow-based domain parameters, and capacity results across day-ahead/intraday/long-term/balancing timeframes. Definitions in the JAO Publication Handbook, maintained upstream.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}
