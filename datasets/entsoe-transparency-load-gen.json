@@ -1,0 +1,22 @@
+{
+  "id": "link:entsoe-transparency-load-gen",
+  "title": "ENTSO-E Transparency — load & generation",
+  "description": "Pan-European load, generation-per-production-type and cross-border physical flows. Authoritative source; EDiT links only and does not re-host.",
+  "tier": "linked",
+  "publisher": { "name": "ENTSO-E", "role": "external-source", "partOf": null },
+  "license": "LicenseRef-EXTERNAL",
+  "themes": ["load", "generation", "cross-border-flow", "market"],
+  "spatialCoverage": "Europe (bidding zones)",
+  "temporalResolution": "PT15M",
+  "updateFrequency": "varies-by-series",
+  "distribution": {
+    "format": "XML-via-API",
+    "access": "link-only",
+    "endpoint": "https://transparency.entsoe.eu/",
+    "note": "Requires a free ENTSO-E account and an API security token. Reuse governed by the ENTSO-E Transparency Platform terms of use. Full data dictionary maintained upstream.",
+    "loader": null
+  },
+  "variables": "See ENTSO-E documentation — full field list maintained upstream.",
+  "submittedBy": "lars@kth.se",
+  "added": "2026-06-22"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "edit:nordic490-live-state",
+  "title": "Nordic-490 demonstrator — live state",
+  "description": "Steady-state AC power-flow results for the Nordic-490 bus model, driven by current weather and production forecasts scaled to the model. One snapshot every 5 minutes.",
+  "tier": "house",
+  "publisher": { "name": "KTH EPE", "role": "host", "partOf": "EDiT / Elflexibel industri" },
+  "license": "CC-BY-4.0",
+  "themes": ["power-flow", "nordic", "state-estimation", "monitoring"],
+  "spatialCoverage": "Nordic synchronous area (SE, NO, FI, DK-east)",
+  "temporalResolution": "PT5M",
+  "updateFrequency": "PT5M",
+  "distribution": {
+    "format": "parquet",
+    "access": "direct",
+    "endpoint": "https://catalog.edit.se/api/nordic490/latest.parquet",
+    "loader": {
+      "lang": "python",
+      "snippet": "import pandas as pd; df = pd.read_parquet('https://catalog.edit.se/api/nordic490/latest.parquet')"
+    }
+  },
+  "variables": [
+    { "name": "bus_id", "unit": null, "desc": "bus identifier (490 buses)" },
+    { "name": "v_pu", "unit": "p.u.", "desc": "voltage magnitude" },
+    { "name": "p_mw", "unit": "MW", "desc": "active power injection" },
+    { "name": "line_flow_mw", "unit": "MW", "desc": "active flow per branch" },
+    { "name": "timestamp", "unit": "UTC", "desc": "snapshot time" }
+  ],
+  "submittedBy": "intern@kth.se",
+  "added": "2026-06-22"
+}

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://catalog.edit.se/schema/dataset.schema.json",
+  "title": "EDiT dataset record",
+  "description": "One record describes one dataset in the EDiT data commons, regardless of whether EDiT hosts it (house), links to it (linked), or a collaborator contributed it (contributed). The record describes the dataset as an object in the world; it does not constrain the dataset's internal content.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "description", "tier", "publisher", "license", "distribution", "added"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable, collision-free identifier. Namespace prefix MUST match the tier: edit: for house, link: for linked, contrib: for contributed. Slug is lowercase alphanumeric with hyphens.",
+      "pattern": "^(edit|link|contrib):[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "description": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Plain-language summary of what the dataset contains and where it comes from."
+    },
+    "tier": {
+      "enum": ["house", "linked", "contributed"]
+    },
+    "publisher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "role"],
+      "properties": {
+        "name": { "type": "string" },
+        "role": { "enum": ["host", "external-source", "contributor"] },
+        "partOf": { "type": ["string", "null"] }
+      }
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX license identifier (https://spdx.org/licenses/) for house and contributed tiers. Linked tier may use the sentinel LicenseRef-EXTERNAL when the upstream terms are proprietary or non-SPDX; the human-readable terms then go in distribution.note.",
+      "pattern": "^(CC-BY-4.0|CC-BY-SA-4.0|CC-BY-NC-4.0|CC-BY-NC-SA-4.0|CC0-1.0|MIT|Apache-2.0|BSD-3-Clause|BSD-2-Clause|GPL-3.0-only|GPL-3.0-or-later|LGPL-3.0-only|MPL-2.0|ODbL-1.0|LicenseRef-EXTERNAL)$"
+    },
+    "themes": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+      "description": "Lowercase hyphenated keywords for search and grouping."
+    },
+    "spatialCoverage": { "type": "string" },
+    "temporalResolution": {
+      "type": ["string", "null"],
+      "description": "ISO-8601 duration (e.g. PT5M, PT15M, PT1H, P1D) or null for non-time-series data.",
+      "pattern": "^(P(?!$)(\\d+Y)?(\\d+M)?(\\d+D)?(T(?=\\d)(\\d+H)?(\\d+M)?(\\d+S)?)?|none-static)$"
+    },
+    "updateFrequency": {
+      "type": "string",
+      "description": "ISO-8601 duration, 'varies-by-series', or 'none-static'."
+    },
+    "distribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "access"],
+      "properties": {
+        "format": {
+          "type": "string",
+          "description": "Free-text shape label: parquet, csv, json-timeseries, hdf5-waveforms, geojson, XML-via-API, etc. Names the shape; does not constrain it."
+        },
+        "access": {
+          "enum": ["direct", "link-only"],
+          "description": "direct = EDiT serves the bytes; link-only = EDiT points to an upstream source and never re-hosts."
+        },
+        "endpoint": { "type": "string", "format": "uri" },
+        "note": {
+          "type": "string",
+          "description": "Access caveats: registration walls, tokens, citation requirements, or human-readable proprietary terms."
+        },
+        "loader": {
+          "type": ["object", "null"],
+          "description": "Machine-actionable load snippet for the playground. MUST be null when one-click load cannot be guaranteed (typically link-only datasets).",
+          "additionalProperties": false,
+          "required": ["lang", "snippet"],
+          "properties": {
+            "lang": { "type": "string" },
+            "snippet": { "type": "string" }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "access": { "const": "direct" } } },
+          "then": { "required": ["endpoint"] }
+        }
+      ]
+    },
+    "variables": {
+      "description": "Either a structured list of fields (preferred for data you control) or a free-text pointer to upstream documentation (for linked data you don't fully control).",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "unit": { "type": ["string", "null"] },
+              "desc": { "type": "string" }
+            }
+          }
+        },
+        { "type": "string" }
+      ]
+    },
+    "submittedBy": { "type": "string" },
+    "added": { "type": "string", "format": "date" }
+  },
+  "allOf": [
+    {
+      "$comment": "Namespace prefix must agree with tier.",
+      "if": { "properties": { "tier": { "const": "house" } } },
+      "then": { "properties": { "id": { "pattern": "^edit:" } } }
+    },
+    {
+      "if": { "properties": { "tier": { "const": "linked" } } },
+      "then": { "properties": { "id": { "pattern": "^link:" } } }
+    },
+    {
+      "if": { "properties": { "tier": { "const": "contributed" } } },
+      "then": { "properties": { "id": { "pattern": "^contrib:" } } }
+    },
+    {
+      "$comment": "House and contributed tiers must carry a real SPDX id, not the external sentinel.",
+      "if": { "properties": { "tier": { "enum": ["house", "contributed"] } } },
+      "then": { "not": { "properties": { "license": { "const": "LicenseRef-EXTERNAL" } } } }
+    }
+  ]
+}

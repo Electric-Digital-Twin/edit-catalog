@@ -1,0 +1,26 @@
+{
+  "id": "contrib:your-dataset-slug",
+  "title": "Human-readable dataset name",
+  "description": "What the dataset contains and where it comes from. At least a sentence or two.",
+  "tier": "contributed",
+  "publisher": { "name": "Your name or organisation", "role": "contributor", "partOf": null },
+  "license": "CC-BY-4.0",
+  "themes": ["keyword-one", "keyword-two"],
+  "spatialCoverage": "geographic scope, e.g. 'single LV feeder, Sweden'",
+  "temporalResolution": "PT1H",
+  "updateFrequency": "none-static",
+  "distribution": {
+    "format": "csv",
+    "access": "direct",
+    "endpoint": "https://catalog.edit.se/files/contrib/your-file.csv",
+    "loader": {
+      "lang": "python",
+      "snippet": "import pandas as pd; df = pd.read_csv('https://catalog.edit.se/files/contrib/your-file.csv')"
+    }
+  },
+  "variables": [
+    { "name": "column_name", "unit": "unit-or-null", "desc": "what it is" }
+  ],
+  "submittedBy": "you@example.org",
+  "added": "2026-06-22"
+}

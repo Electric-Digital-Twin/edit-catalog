@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDiT — power-system data catalog</title>
+<style>
+  :root{
+    --bg:#0e1116; --surface:#161b22; --surface2:#1c2230; --line:rgba(255,255,255,0.10);
+    --line2:rgba(255,255,255,0.18); --text:#e6edf3; --muted:#9aa7b4; --faint:#6b7682;
+    --teal-bg:#11352c; --teal-fg:#5dcaa5; --blue-bg:#10243c; --blue-fg:#85b7eb;
+    --coral-bg:#3a1d10; --coral-fg:#f0997b; --accent:#5dcaa5;
+    --radius:12px; --radius-sm:8px;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f7f8fa; --surface:#fff; --surface2:#f1f3f6; --line:rgba(0,0,0,0.10);
+      --line2:rgba(0,0,0,0.18); --text:#1a1f24; --muted:#5a6571; --faint:#8a939c;
+      --teal-bg:#e1f5ee; --teal-fg:#0f6e56; --blue-bg:#e6f1fb; --blue-fg:#185fa5;
+      --coral-bg:#faece7; --coral-fg:#993c1d; --accent:#0f6e56; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+  header.site{border-bottom:1px solid var(--line);padding:34px 0 26px;}
+  .brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .brand h1{font-size:30px;font-weight:600;letter-spacing:-0.02em;margin:0;}
+  .brand .full{color:var(--muted);font-size:15px;}
+  .tagline{color:var(--muted);font-size:15px;margin:14px 0 0;max-width:640px;}
+  .partners{margin-top:18px;font-size:12.5px;color:var(--faint);
+    display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .partners b{color:var(--muted);font-weight:500;}
+  .pill{border:1px solid var(--line);border-radius:999px;padding:3px 11px;color:var(--muted);}
+  main{padding:26px 0 60px;}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 22px;}
+  .filter{font:inherit;font-size:13px;background:transparent;color:var(--muted);
+    border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;
+    transition:.12s;}
+  .filter:hover{border-color:var(--line2);color:var(--text);}
+  .filter[aria-pressed="true"]{background:var(--surface2);border-color:var(--line2);color:var(--text);}
+  .filter .n{color:var(--faint);margin-left:4px;}
+  .count{margin-left:auto;font-size:12.5px;color:var(--faint);}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;margin-bottom:14px;}
+  .card-top{display:flex;gap:14px;align-items:flex-start;}
+  .ico{width:38px;height:38px;flex:0 0 auto;border-radius:var(--radius-sm);
+    display:flex;align-items:center;justify-content:center;font-size:19px;}
+  .ico.house{background:var(--teal-bg);color:var(--teal-fg);}
+  .ico.linked{background:var(--blue-bg);color:var(--blue-fg);}
+  .ico.contributed{background:var(--coral-bg);color:var(--coral-fg);}
+  .badges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:3px;}
+  .tag{font-size:11px;padding:2px 9px;border-radius:var(--radius-sm);}
+  .tag.house{background:var(--teal-bg);color:var(--teal-fg);}
+  .tag.linked{background:var(--blue-bg);color:var(--blue-fg);}
+  .tag.contributed{background:var(--coral-bg);color:var(--coral-fg);}
+  .tag.ready{background:var(--teal-bg);color:var(--teal-fg);}
+  .tag.link{background:var(--surface2);color:var(--muted);}
+  .ctitle{font-size:16px;font-weight:600;margin:2px 0 5px;}
+  .cdesc{font-size:13.5px;color:var(--muted);margin:0;}
+  .meta{margin-top:14px;border-top:1px solid var(--line);padding-top:10px;
+    display:grid;grid-template-columns:repeat(2,1fr);gap:4px 22px;}
+  .meta div{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;}
+  .meta .k{color:var(--faint);} .meta .v{color:var(--muted);text-align:right;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .reveal{margin-top:14px;font:inherit;font-size:12.5px;background:transparent;
+    color:var(--muted);border:1px solid var(--line);border-radius:var(--radius-sm);
+    padding:6px 13px;cursor:pointer;transition:.12s;}
+  .reveal:hover{border-color:var(--line2);color:var(--text);}
+  pre.rec{display:none;margin:12px 0 0;background:var(--bg);border:1px solid var(--line);
+    border-radius:var(--radius-sm);padding:14px;overflow:auto;font-family:var(--mono);
+    font-size:11.5px;line-height:1.55;color:var(--text);}
+  pre.rec .key{color:var(--blue-fg);}
+  a.src{color:var(--accent);text-decoration:none;}
+  a.src:hover{text-decoration:underline;}
+  .state{color:var(--muted);font-size:14px;padding:30px 0;}
+  footer{border-top:1px solid var(--line);padding:24px 0 50px;color:var(--faint);font-size:12.5px;}
+  footer code{font-family:var(--mono);font-size:11.5px;}
+  .demo-note{background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius-sm);
+    padding:10px 14px;font-size:12.5px;color:var(--muted);margin:0 0 22px;}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <div class="brand">
+    <h1>EDiT</h1>
+    <span class="full">Elsystemets digitala tvilling</span>
+  </div>
+  <p class="tagline">A national, open data commons for analysing, monitoring, optimising and
+    controlling power grids. Every dataset — hosted, linked, or contributed — is described by one
+    shared, machine-readable record.</p>
+  <div class="partners">
+    <b>A work package in</b>
+    <span class="pill">Elflexibel industri</span>
+    <span class="pill">led by RISE</span>
+    <span class="pill">hosted at KTH</span>
+    <span class="pill">funded by Vinnova</span>
+  </div>
+</div></header>
+
+<main><div class="wrap">
+  <div class="demo-note">Demonstrator — dataset endpoints shown here are illustrative and not yet live.</div>
+  <div class="controls" id="controls">
+    <button class="filter" data-f="all" aria-pressed="true">All <span class="n" id="n-all">·</span></button>
+    <button class="filter" data-f="house" aria-pressed="false">House data <span class="n" id="n-house">·</span></button>
+    <button class="filter" data-f="linked" aria-pressed="false">Linked <span class="n" id="n-linked">·</span></button>
+    <button class="filter" data-f="contributed" aria-pressed="false">Contributed <span class="n" id="n-contributed">·</span></button>
+    <span class="count" id="shown"></span>
+  </div>
+  <div id="cards"><p class="state">Loading catalog…</p></div>
+</div></main>
+
+<footer><div class="wrap">
+  Catalog source: <code>datasets/*.json</code>, validated against
+  <code>schema/dataset.schema.json</code> on every change.
+  Contribute by opening a pull request that adds one record. See <code>README.md</code>.
+</div></footer>
+
+<script>
+const TIER_ICON = {house:"\u25C9", linked:"\u2197", contributed:"\u2191"};
+const TIER_LABEL = {house:"House data", linked:"Linked", contributed:"Contributed"};
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function jsonHtml(o){
+  return esc(JSON.stringify(o,null,2))
+    .replace(/&quot;([^&]+?)&quot;(\s*:)/g,'<span class="key">&quot;$1&quot;</span>$2');
+}
+function fmtVal(v){
+  if(v===null||v===undefined) return "—";
+  if(Array.isArray(v)) return v.join(", ");
+  return String(v);
+}
+
+async function load(){
+  let manifest;
+  try{
+    const r = await fetch("datasets/index.json", {cache:"no-store"});
+    if(!r.ok) throw new Error(r.status);
+    manifest = await r.json();
+  }catch(e){
+    document.getElementById("cards").innerHTML =
+      '<p class="state">Could not load <code>datasets/index.json</code>. '+
+      'Run <code>python3 validate.py</code> to generate it, then reload.</p>';
+    return;
+  }
+  const records = [];
+  for(const m of manifest.datasets){
+    try{
+      const r = await fetch("datasets/"+m.file, {cache:"no-store"});
+      records.push(await r.json());
+    }catch(e){ /* skip unreadable */ }
+  }
+  render(records);
+}
+
+function card(d){
+  const tier = d.tier;
+  const dist = d.distribution || {};
+  const ready = dist.loader ? '<span class="tag ready">playground-ready</span>'
+                            : '<span class="tag link">link + format hint</span>';
+  const endpoint = dist.endpoint
+    ? '<a class="src" href="'+esc(dist.endpoint)+'" target="_blank" rel="noopener">source ↗</a>'
+    : '—';
+  const rows = [
+    ["Source", (d.publisher&&d.publisher.name)||"—"],
+    ["License", d.license||"—"],
+    ["Format", dist.format||"—"],
+    ["Update", d.updateFrequency||"—"],
+    ["Coverage", d.spatialCoverage||"—"],
+    ["Access", endpoint],
+  ].map(([k,v])=>'<div><span class="k">'+esc(k)+'</span><span class="v">'+
+      (k==="Access"?v:esc(fmtVal(v)))+'</span></div>').join("");
+
+  return '<article class="card" data-tier="'+esc(tier)+'">'+
+    '<div class="card-top">'+
+      '<div class="ico '+esc(tier)+'">'+TIER_ICON[tier]+'</div>'+
+      '<div style="flex:1;min-width:0">'+
+        '<div class="badges"><span class="tag '+esc(tier)+'">'+esc(TIER_LABEL[tier])+'</span>'+ready+'</div>'+
+        '<h3 class="ctitle">'+esc(d.title)+'</h3>'+
+        '<p class="cdesc">'+esc(d.description)+'</p>'+
+      '</div>'+
+    '</div>'+
+    '<div class="meta">'+rows+'</div>'+
+    '<button class="reveal">Show record</button>'+
+    '<pre class="rec">'+jsonHtml(d)+'</pre>'+
+  '</article>';
+}
+
+function render(records){
+  const counts = {all:records.length, house:0, linked:0, contributed:0};
+  records.forEach(d=>counts[d.tier]++);
+  for(const k in counts){ const el=document.getElementById("n-"+k); if(el) el.textContent=counts[k]; }
+
+  document.getElementById("cards").innerHTML = records.map(card).join("") ||
+    '<p class="state">No datasets yet.</p>';
+
+  document.querySelectorAll(".reveal").forEach(b=>{
+    b.addEventListener("click",()=>{
+      const pre=b.nextElementSibling, open=pre.style.display==="block";
+      pre.style.display=open?"none":"block";
+      b.textContent=open?"Show record":"Hide record";
+    });
+  });
+
+  let active="all";
+  function apply(){
+    let shown=0;
+    document.querySelectorAll(".card").forEach(c=>{
+      const ok = active==="all"||c.dataset.tier===active;
+      c.style.display=ok?"":"none"; if(ok) shown++;
+    });
+    document.getElementById("shown").textContent=shown+" shown";
+  }
+  document.getElementById("controls").addEventListener("click",e=>{
+    const b=e.target.closest(".filter"); if(!b) return;
+    active=b.dataset.f;
+    document.querySelectorAll(".filter").forEach(f=>f.setAttribute("aria-pressed",f===b));
+    apply();
+  });
+  apply();
+}
+load();
+</script>
+</body>
+</html>

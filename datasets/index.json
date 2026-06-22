@@ -1,0 +1,41 @@
+{
+  "count": 3,
+  "datasets": [
+    {
+      "id": "link:entsoe-transparency-load-gen",
+      "file": "entsoe-transparency-load-gen.json",
+      "title": "ENTSO-E Transparency \u2014 load & generation",
+      "tier": "linked",
+      "themes": [
+        "load",
+        "generation",
+        "cross-border-flow",
+        "market"
+      ]
+    },
+    {
+      "id": "contrib:lv-pv-hosting-2026",
+      "file": "lv-pv-hosting-2026.json",
+      "title": "LV feeder PV hosting-capacity traces (MSc thesis)",
+      "tier": "contributed",
+      "themes": [
+        "pv",
+        "hosting-capacity",
+        "low-voltage",
+        "thesis"
+      ]
+    },
+    {
+      "id": "edit:nordic490-live-state",
+      "file": "nordic490-live-state.json",
+      "title": "Nordic-490 demonstrator \u2014 live state",
+      "tier": "house",
+      "themes": [
+        "power-flow",
+        "nordic",
+        "state-estimation",
+        "monitoring"
+      ]
+    }
+  ]
+}

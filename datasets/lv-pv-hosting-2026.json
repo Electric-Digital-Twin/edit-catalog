@@ -1,0 +1,28 @@
+{
+  "id": "contrib:lv-pv-hosting-2026",
+  "title": "LV feeder PV hosting-capacity traces (MSc thesis)",
+  "description": "Time-series voltage and current traces from one Swedish low-voltage feeder across PV penetration scenarios, supporting a 2026 master's thesis. One-off static dataset.",
+  "tier": "contributed",
+  "publisher": { "name": "A. Student", "role": "contributor", "partOf": "KTH EPE" },
+  "license": "CC-BY-NC-4.0",
+  "themes": ["pv", "hosting-capacity", "low-voltage", "thesis"],
+  "spatialCoverage": "single LV feeder, Sweden (anonymised)",
+  "temporalResolution": "PT1M",
+  "updateFrequency": "none-static",
+  "distribution": {
+    "format": "csv",
+    "access": "direct",
+    "endpoint": "https://catalog.edit.se/files/contrib/lv-pv-hosting-2026.csv",
+    "loader": {
+      "lang": "python",
+      "snippet": "import pandas as pd; df = pd.read_csv('https://catalog.edit.se/files/contrib/lv-pv-hosting-2026.csv')"
+    }
+  },
+  "variables": [
+    { "name": "t", "unit": "UTC", "desc": "timestamp, 1-min resolution" },
+    { "name": "pv_pct", "unit": "%", "desc": "PV penetration scenario" },
+    { "name": "v_node", "unit": "V", "desc": "node voltage" }
+  ],
+  "submittedBy": "a.student@kth.se",
+  "added": "2026-06-19"
+}
